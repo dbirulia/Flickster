@@ -1,9 +1,11 @@
 package com.birulia.flickster;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import com.birulia.flickster.adapters.MovieArrayAdapter;
@@ -95,4 +97,11 @@ public class MovieActivity extends AppCompatActivity {
         });
     }
 
+    public void ShowDetails(View view) {
+
+        Intent detailsActivity = new Intent(getApplicationContext(), MovieDetailsActivity.class);
+        detailsActivity.putExtra("key","value");
+        detailsActivity.putExtra ("MyData", "Data from Activity1");
+        startActivity (detailsActivity);
+    }
 }
