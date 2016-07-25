@@ -60,6 +60,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         viewHolder.ivImage.setImageResource(0);
         // populate data
         viewHolder.tvTitle.setText(moview.getOriginalTitle());
+        int movie_place_holder = R.drawable.movie_placeholder;
 
         String imageURL = "";
         int orientation = parent.getResources().getConfiguration().orientation;
@@ -69,20 +70,20 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
             if (moview.getOriginalTitle().length() > 20){
                 truncateLength = 200;
             }
-
             viewHolder.tvOverview.setText(ellipsis(moview.getOverview(), truncateLength));
+
 
         } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             imageURL = moview.getBackDropPath();
             viewHolder.tvOverview.setText(moview.getOverview());
+            movie_place_holder = R.drawable.movie_placeholder_land;
         }
 
         Picasso.with(getContext()).load(imageURL)
-                .placeholder(R.drawable.movie_placeholder)
-                .error(R.drawable.movie_placeholder)
+                .placeholder(movie_place_holder)
+                .error(movie_place_holder)
                 .transform(new RoundedCornersTransformation(10, 10))
                 .into(viewHolder.ivImage);
-
 
         return convertView;
 
