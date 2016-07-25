@@ -21,21 +21,30 @@ public class Movie {
     public String getOriginalTitle() {
         return originalTitle;
     }
-
     public String getOverview() {
         return overview;
+    }
+    public Double getVoteAverage() {
+        return voteAverage;
+    }
+    public Boolean getHasVideo() {
+        return hasVideo;
     }
 
     String posterPath;
     String originalTitle;
     String overview;
     String backDropPath;
+    Double voteAverage;
+    Boolean hasVideo;
 
     public Movie(JSONObject jsonObj) throws JSONException {
         this.posterPath = jsonObj.getString("poster_path");
         this.backDropPath = jsonObj.getString("backdrop_path");
         this.originalTitle = jsonObj.getString("original_title");
         this.overview = jsonObj.getString("overview");
+        this.voteAverage = jsonObj.getDouble("vote_average");
+        this.hasVideo = jsonObj.getBoolean("video");
     }
 
     public static ArrayList<Movie> fromJSONArray(JSONArray jsonArray){

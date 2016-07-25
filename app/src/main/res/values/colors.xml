@@ -7,5 +7,7 @@
     <color name="overviewColor">#BDBDBD</color>
     <color name="titleColor">#EEEEEE</color>
     <color name="blackCard">#212121</color>
+    <color name="primary_light">#EEEEEE</color>
+    <color name="primary_dark">#000000</color>
 
 </resources>

@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.birulia.flickster.adapters.MovieArrayAdapter;
@@ -56,16 +57,24 @@ public class MovieActivity extends AppCompatActivity {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-
         lvMovies = (ListView)findViewById(R.id.lvMovies);
         movieAdapter = new MovieArrayAdapter(this, movies);
         lvMovies.setAdapter(movieAdapter);
 
         refreshAsync();
+
+        lvMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie movie = movies.get(position);
+                showDetails(movie);
+            }
+        });
     }
 
 
     public void refreshAsync() {
+
         // Send the network request to fetch the updated data
         RequestParams params = new RequestParams();
         params.put("api_key", "a07e22bc18f5cb106bfe4cc1f83ad8ed");
@@ -97,11 +106,14 @@ public class MovieActivity extends AppCompatActivity {
         });
     }
 
-    public void ShowDetails(View view) {
+    public void showDetails(Movie movie) {
 
         Intent detailsActivity = new Intent(getApplicationContext(), MovieDetailsActivity.class);
-        detailsActivity.putExtra("key","value");
-        detailsActivity.putExtra ("MyData", "Data from Activity1");
+        detailsActivity.putExtra ("title", movie.getOriginalTitle());
+        detailsActivity.putExtra ("overview",movie.getOverview());
+        detailsActivity.putExtra ("img_url", movie.getBackDropPath());
+        detailsActivity.putExtra ("vote_average", movie.getVoteAverage().toString());
+        detailsActivity.putExtra ("has_video", movie.getHasVideo().toString());
         startActivity (detailsActivity);
     }
 }
