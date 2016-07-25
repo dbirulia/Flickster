@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/admin/CodePath/Flickster/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="8602e3a430af4369fc6d8f7f44050c1b43204477">
+        <dex dex="/Users/admin/CodePath/Flickster/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_fb3fcb09013ab173d3021cf88fe096e0f522ac9b/classes.dex" />
+    </item>
+
+</items>
